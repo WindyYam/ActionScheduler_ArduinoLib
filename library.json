@@ -1,0 +1,20 @@
+{
+  "name": "ActionScheduler",
+  "version": "1.0.0",
+  "description": "A timeline-based action scheduler for Arduino",
+  "keywords": "scheduler, timing, callback, periodic",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WindyYam/ActionScheduler"
+  },
+  "authors": {
+    "name": "windy.yam0",
+    "email": "windy.yam0@gmail.com"
+  },
+  "license": "MIT",
+  "frameworks": "arduino",
+  "platforms": "*",
+  "build": {
+    "libArchive": false
+  }
+}
