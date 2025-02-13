@@ -9,19 +9,6 @@ const uint32_t DEBOUNCE_DELAY = 50; //ms
 static byte state = LOW; 
 ActionScheduler actionScheduler;
 
-void setup() {
-  pinMode(ledPin, OUTPUT);
-  pinMode(buttonPin, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(buttonPin), isrHandler, FALLING);
-}
-
-void loop() {
-  static uint32_t lastTime = 0;
-  uint32_t nowTime = millis();
-  actionScheduler.proceed(nowTime - lastTime);
-  lastTime = nowTime;
-}
-
 ActionReturn_t deBounce(void* arg){
   if(digitalRead(buttonPin) == LOW){
     digitalWrite(ledPin, state);
@@ -33,4 +20,17 @@ ActionReturn_t deBounce(void* arg){
 
 void isrHandler() {
   actionScheduler.schedule(DEBOUNCE_DELAY, deBounce, NULL);
+}
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  pinMode(buttonPin, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(buttonPin), isrHandler, FALLING);
+}
+
+void loop() {
+  static uint32_t lastTime = 0;
+  uint32_t nowTime = millis();
+  actionScheduler.proceed(nowTime - lastTime);
+  lastTime = nowTime;
 }

@@ -1,5 +1,3 @@
-#include <Arduino.h>
-
 //Optionally config the max nodes
 #define ACTION_SCHEDULER_MAX_NODES 64
 #include <ActionScheduler.h>
