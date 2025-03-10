@@ -29,14 +29,15 @@
 #define ACTION_SCHEDULER_MAX_NODES 64U
 #endif
 
-#if ACTION_SCHEDULER_MAX_NODES > 255
+#if ACTION_SCHEDULER_MAX_NODES >= 255
 #error ACTION_SCHEDULER_MAX_NODES cannot exceed 255! For now
 #endif
 
 /**
  * @brief Invalid scheduler ID value
  */
-#define ACTION_SCHEDULER_ID_INVALID 0U
+// If you are to refactor the MAX_ACTION_SCHEDULER_NODES to be greater than 254, pay attention to this constant, make it right
+#define ACTION_SCHEDULER_ID_INVALID UINT16_MAX
 
 /**
  * @brief Return type for action callbacks indicating if the action should be reloaded
