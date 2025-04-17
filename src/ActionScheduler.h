@@ -83,13 +83,13 @@ public:
      *
      * Updates the scheduler's timeline by the specified amount of time and
      * executes any callbacks that are due. Callbacks are executed with
-     * interrupts enabled to allow for callback chains.
+     * interrupts enabled.
      */
     bool proceed(uint32_t timeElapsedMs);
 
     /**
-     * @brief Schedules a one-shot action
-     * @param delayedTime Delay before execution in milliseconds
+     * @brief Schedules an action
+     * @param delayedTime Delay before execution in milliseconds, and also subsequent reload period
      * @param cb Callback function to execute
      * @param arg User data to pass to callback
      * @return ActionSchedulerId_t Unique ID for the scheduled action, or ACTION_SCHEDULER_ID_INVALID if scheduling failed
@@ -100,7 +100,7 @@ public:
     ActionSchedulerId_t schedule(uint32_t delayedTime, ActionCallback_t cb, void* arg);
 
     /**
-     * @brief Schedules a periodic action
+     * @brief Schedules an action with different reload value
      * @param delayedTime Initial delay before first execution in milliseconds
      * @param reload Period for subsequent executions in milliseconds
      * @param cb Callback function to execute
